@@ -599,6 +599,7 @@ We apologize sincerely if you contributed your suggestions and feedback but were
   ("drop_money_bag", "Drop money bag"),
   ("deposit_money_chest", "Deposit in money chest"),
   ("withdraw_money_chest", "Withdraw from money chest"),
+  ("drop_twenty_percent", "Drop twenty percent of your gold"), #DROP TWENTY PERCENT ADD
   ("admin_cheat_money", "Give yourself money (Admin)"),
   ("no_money_chest_nearby", "No money chests nearby."),
   ("cant_open_money_chest", "You can't open the money chest."),

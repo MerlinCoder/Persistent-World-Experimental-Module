@@ -1,4 +1,4 @@
-15
+17
 qstr_{s0}^Ironflesh:_{reg {s0}^Ironflesh:_{reg10}
 qstr_{s0}^Power_strike:_{ {s0}^Power_strike:_{reg10}
 qstr_{s0}^Power_draw:_{re {s0}^Power_draw:_{reg10}
@@ -14,3 +14,5 @@ qstr_{s0}^Looting:_{reg10 {s0}^Looting:_{reg10}
 qstr_{s0}^Sailing:_{reg10 {s0}^Sailing:_{reg10}
 qstr_{s0}^Tailoring:_{reg {s0}^Tailoring:_{reg10}
 qstr_{s0}^Herding:_{reg10 {s0}^Herding:_{reg10}
+qstr_{s11}_dropped_twenty {s11}_dropped_twenty_percent!
+qstr_{s11}_has_no_money_t {s11}_has_no_money_to_drop!

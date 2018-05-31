@@ -4096,18 +4096,27 @@ presentations.extend([
         (assign, "$g_presentation_money_bag_amount", ":my_gold"),
       (try_end),
       (overlay_set_val, "$g_presentation_obj_money_bag_amount", "$g_presentation_money_bag_amount"),
+	  
+	   #DROP TWENTY PERCENT BEGIN
+	  (create_button_overlay, "$g_presentation_money_bag_twenty_percent", "str_drop_twenty_percent"),
+      (overlay_set_color, "$g_presentation_money_bag_twenty_percent", 0xFFFFFF),
+      (position_set_x, pos1, 280),
+      (position_set_y, pos1, 392),
+      (overlay_set_position, "$g_presentation_money_bag_twenty_percent", pos1),
+      (overlay_set_size, "$g_presentation_money_bag_twenty_percent", pos2),
+	  #DROP TWENTY PERCENT END
 
       (create_button_overlay, "$g_presentation_obj_money_chest_deposit", "str_deposit_money_chest"),
       (overlay_set_color, "$g_presentation_obj_money_chest_deposit", 0xFFFFFF),
       (position_set_x, pos1, 280),
-      (position_set_y, pos1, 392),
+      (position_set_y, pos1, 368), #DROP TWENTY PERCENT CHANGE
       (overlay_set_position, "$g_presentation_obj_money_chest_deposit", pos1),
       (overlay_set_size, "$g_presentation_obj_money_chest_deposit", pos2),
 
       (create_button_overlay, "$g_presentation_obj_money_chest_withdraw", "str_withdraw_money_chest"),
       (overlay_set_color, "$g_presentation_obj_money_chest_withdraw", 0xFFFFFF),
       (position_set_x, pos1, 280),
-      (position_set_y, pos1, 368),
+      (position_set_y, pos1, 344), #DROP TWENTY PERCENT CHANGE
       (overlay_set_position, "$g_presentation_obj_money_chest_withdraw", pos1),
       (overlay_set_size, "$g_presentation_obj_money_chest_withdraw", pos2),
 
@@ -4117,7 +4126,7 @@ presentations.extend([
         (create_button_overlay, "$g_presentation_obj_money_bag_admin_cheat", "str_admin_cheat_money"),
         (overlay_set_color, "$g_presentation_obj_money_bag_admin_cheat", 0xFFFFFF),
         (position_set_x, pos1, 280),
-        (position_set_y, pos1, 344),
+        (position_set_y, pos1, 320), #DROP TWENTY PERCENT CHANGE
         (overlay_set_position, "$g_presentation_obj_money_bag_admin_cheat", pos1),
         (overlay_set_size, "$g_presentation_obj_money_bag_admin_cheat", pos2),
       (else_try),
@@ -4154,6 +4163,18 @@ presentations.extend([
         (else_try),
           (call_script, "script_preset_message", "str_dont_have_enough_money", preset_message_yellow|preset_message_fail_sound, 0, 0),
         (try_end),
+#DROP TWENTY PERCENT BEGIN
+      (else_try),
+        (eq, ":object", "$g_presentation_money_bag_twenty_percent"),
+		(multiplayer_get_my_player, ":my_player_id"),
+        (player_get_gold, ":my_gold", ":my_player_id"),
+        (try_begin),
+		  (store_div, ":drop_amount", ":my_gold", 5),
+          (le, ":drop_amount", 0),
+		  (call_script, "script_preset_message", "str_dont_have_enough_money", preset_message_yellow|preset_message_fail_sound, 0, 0),
+		(try_end),
+		(multiplayer_send_message_to_server, client_event_drop_twenty_percent), #Most calculation is done server side to prevent cheating
+#DROP TWENTY PERCENT END
       (else_try),
         (try_begin),
           (eq, ":object", "$g_presentation_obj_money_chest_deposit"),

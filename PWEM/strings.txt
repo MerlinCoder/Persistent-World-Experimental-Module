@@ -1,5 +1,5 @@
 stringsfile version 1
-585
+586
 str_no_string NO_STRING!
 str_empty_string _
 str_yes Yes.
@@ -382,6 +382,7 @@ str_s0__s1_ {!}{s0}_({s1})
 str_drop_money_bag Drop_money_bag
 str_deposit_money_chest Deposit_in_money_chest
 str_withdraw_money_chest Withdraw_from_money_chest
+str_drop_twenty_percent Drop_twenty_percent_of_your_gold
 str_admin_cheat_money Give_yourself_money_(Admin)
 str_no_money_chest_nearby No_money_chests_nearby.
 str_cant_open_money_chest You_can't_open_the_money_chest.
