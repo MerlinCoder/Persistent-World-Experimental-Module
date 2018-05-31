@@ -1,0 +1,1 @@
+This module is based on Persistent World Module 4.5.1 by Vornne. Please see this page for a full list of credits: https://forums.taleworlds.com/index.php/topic,160403.0.html
