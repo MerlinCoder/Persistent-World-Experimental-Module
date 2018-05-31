@@ -1377,6 +1377,17 @@ itm_wall_banner("fac_6", "b"),
 itm_wall_banner("fac_7", "b"),
 itm_wall_banner("fac_8", "b"),
 
+#Decapitation Begin
+["male_head", "Decapitated Head", [("decapitated_male_head",0)], itp_type_one_handed_wpn|itp_primary|itp_no_parry, itc_dagger|itcf_carry_bowcase_left,
+ 136, weight(1)|spd_rtng(65)|weapon_length(20)|swing_damage(1,cut), imodbits_none],
+["female_head", "Decapitated Head", [("decapitated_female_head",0)], itp_type_one_handed_wpn|itp_primary|itp_no_parry, itc_dagger|itcf_carry_bowcase_left,
+ 136, weight(1)|spd_rtng(65)|weapon_length(20)|swing_damage(1,cut), imodbits_none],
+["female_stump", "Female Bloody Neck No Use", [("female_neck",0)], itp_type_head_armor|itp_covers_head, 0,
+ 0, weight(1)|head_armor(80)|difficulty(0), imodbits_none],
+["male_stump", "Male Bloody Neck No Use", [("male_neck",0)], itp_type_head_armor|itp_covers_head, 0,
+ 0, weight(1)|head_armor(80)|difficulty(0), imodbits_none],
+#Decapitation End
+
 ["admin_horse", "Admin Horse", [("plated_charger_black",0)], itp_type_horse, 0,
  0, hit_points(500)|body_armor(100)|difficulty(0)|horse_speed(400)|horse_maneuver(100)|horse_charge(50)|horse_scale(130), imodbit_spirited],
 ["invisible_head", "Invisible Head", [("invisible",0)], itp_type_head_armor|itp_covers_head, 0,
@@ -1390,6 +1401,8 @@ itm_wall_banner("fac_8", "b"),
 ["invisible_sword", "Invisible Sword", [("invisible",0)], itp_type_two_handed_wpn|itp_two_handed|itp_primary, itc_greatsword|itcf_carry_sword_back,
  0, weight(1)|difficulty(30)|spd_rtng(120)|weapon_length(120)|swing_damage(255, cut)|thrust_damage(255, pierce), imodbits_sword_high],
 
+ 
+ 
 ["all_items_end", "all_items_end", [("invisible",0)], itp_no_pick_up_from_ground, 0, 0, 0, 0],
 ["pointer_arrow", "pointer_arrow", [("pointer_arrow",0)], itp_no_pick_up_from_ground, 0, 0, 0, 0],
 ["animal_herd_manager", "animal_herd_manager", [("invisible",0)], itp_no_pick_up_from_ground, 0, 0, 0, 0],

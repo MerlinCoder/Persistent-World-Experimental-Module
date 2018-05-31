@@ -1,5 +1,5 @@
 itemsfile version 3
-767
+771
  itm_no_item INVALID_ITEM INVALID_ITEM 1  invalid_item 0  12599298 9223372036879941647 0 0 1.000000 100 0 0 0 0 1024 1 0 1 0 513 513
  0
 0
@@ -3500,6 +3500,22 @@ itemsfile version 3
  0
 1
 -50.000000  1 1981 2 1729382256910270508 432345564227567625 
+
+ itm_male_head Decapitated_Head Decapitated_Head 1  decapitated_male_head 0  4210690 9223372039832731663 136 0 1.000000 100 0 0 0 0 1024 65 0 20 0 0 1
+ 0
+0
+
+ itm_female_head Decapitated_Head Decapitated_Head 1  decapitated_female_head 0  4210690 9223372039832731663 136 0 1.000000 100 0 0 0 0 1024 65 0 20 0 0 1
+ 0
+0
+
+ itm_female_stump Female_Bloody_Neck_No_Use Female_Bloody_Neck_No_Use 1  female_neck 0  2147483660 0 0 0 1.000000 100 80 0 0 0 0 0 0 0 0 0 0
+ 0
+0
+
+ itm_male_stump Male_Bloody_Neck_No_Use Male_Bloody_Neck_No_Use 1  male_neck 0  2147483660 0 0 0 1.000000 100 80 0 0 0 0 0 0 0 0 0 0
+ 0
+0
 
  itm_admin_horse Admin_Horse Admin_Horse 1  plated_charger_black 0  1 0 0 34359738368 0.000000 100 0 100 0 0 500 100 400 130 0 50 0
  0

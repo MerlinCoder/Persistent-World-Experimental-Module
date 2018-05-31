@@ -1,5 +1,5 @@
 # set this to your module directory, using forward slashes (/) not backward slashes (\):
-export_dir = "../PW/"
+export_dir = "C:/Users/Owner/Desktop/Steam/steamapps/common/MountBlade Warband/Modules/PWEM"
 
 import os
 import sys

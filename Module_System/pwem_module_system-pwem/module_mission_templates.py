@@ -211,6 +211,10 @@ agent_hit = (ti_on_agent_hit, 0, 0, [], # server: apply extra scripted effects f
    [(store_trigger_param_1, ":attacked_agent_id"),
     (store_trigger_param_2, ":attacker_agent_id"),
     (store_trigger_param_3, ":damage_dealt"),
+	(store_trigger_param, ":hit_bone", 4), #DECAPITATION ADD
+	(store_trigger_param, ":ranged", 5), #DECAPITATION ADD
+	(copy_position, pos15, pos0), #DECAPITATION ADD
+	
     (try_begin), # check if damage should bleed through the armor due to unmet requirements
       (agent_slot_ge, ":attacked_agent_id", slot_agent_armor_damage_through, 5),
       (agent_get_slot, ":damage_through_multiplier", ":attacked_agent_id", slot_agent_armor_damage_through),
@@ -230,6 +234,46 @@ agent_hit = (ti_on_agent_hit, 0, 0, [], # server: apply extra scripted effects f
       (is_between, reg0, scripted_items_begin, scripted_items_end),
       (call_script, "script_agent_hit_with_scripted_item", ":attacked_agent_id", ":attacker_agent_id", ":damage_dealt", reg0),
     (try_end),
+	
+	#DECAPITATION BEGIN
+	(try_begin),
+		#CONDITIONS BLOCK BEGIN
+		(multiplayer_is_server), #SERVER SIDE ONLY
+		(lt, ":ranged", 0), #Cannot be decapitated from ranged attack!
+		(neg|agent_is_non_player, ":attacked_agent_id"), #Must be a player to be decapitated (no npcs at the moment!)
+		(agent_is_active, ":attacked_agent_id"), #Must be active (online)
+		(agent_is_human, ":attacked_agent_id"), #Must be human race (for now)
+		(eq, ":hit_bone", 9), #9 is head bone
+		(ge, ":damage_dealt", 15), #15 damage needed for decap to happen
+		(store_agent_hit_points, ":agent_hp", ":attacked_agent_id", 0), #get the agent's hitpoints
+		(le, ":agent_hp", 5), #decapitation only happens if hitpoints are less than or equal to 5
+		#CONDITIONS BLOCK END
+		
+		#CONSEQUENCE BLOCK BEGIN
+		(agent_get_item_slot, ":head_item", ":attacked_agent_id", ek_head), #Get item on agent's head
+		(try_begin),
+			(neq, ":head_item", -1),
+			(agent_unequip_item, ":attacked_agent_id", ":head_item"), #Remove item from agent's head
+		(try_end),
+		(agent_get_player_id, ":attacked_player_id", ":attacked_agent_id"), #Get the agent's player id
+		(player_get_gender, ":attacked_player_gender", ":attacked_player_id"), #Get the player's gender
+		(copy_position, pos16, pos15),
+		(position_set_z_to_ground_level, pos16),
+		(set_spawn_position, pos16),
+		(try_begin),
+			(eq, ":attacked_player_gender", tf_female), #if its a female player...
+			(call_script, "script_change_armor", ":attacked_agent_id", "itm_female_stump"), #Replace head with female bloody stump
+			(spawn_item, "itm_female_head"), #Spawn female decapitated head on the ground
+		(else_try),
+			(eq, ":attacked_player_gender", tf_male), #if its a male player...
+			(call_script, "script_change_armor", ":attacked_agent_id", "itm_male_stump"), #Replace head with male bloody stump
+			(spawn_item, "itm_male_head"), #Spawn male decapitated head on the ground
+		(try_end),
+		(particle_system_burst, "psys_game_blood_2", pos15, 127), # Blood
+		(agent_set_hit_points, ":attacked_agent_id", -1), #Make sure that the agent dies!
+		#CONSEQUENCE BLOCK END		      
+	(try_end),
+	#DECAPITATION END
     ])
 
 item_picked_up = (ti_on_item_picked_up, 0, 0, [], # handle agents picking up an item
